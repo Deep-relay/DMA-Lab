@@ -1,0 +1,54 @@
+# monthNames=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+# invoiceData = np.unique(data[data[:, 4] != ''][:, 4])
+# sales = data[data[:, 4] != ''][:, 5].astype(float)  
+# dates = []
+# for date in invoiceData:
+#     splitDate = date.split()[0].split('/')
+#     splitDate[0], splitDate[1]=splitDate[1], splitDate[0]
+#     splitDate[0], splitDate[-1]= splitDate[-1], splitDate[0]
+#     if len(splitDate[1]) == 1:
+#         splitDate[1] = '0' + splitDate[1]
+#     if len(splitDate[-1])==1:
+#         splitDate[-1]='0'+splitDate[-1]
+#     dates.append(np.datetime64('-'.join(splitDate), 'D'))
+# dates = np.array(dates)
+
+# years = np.array([d.astype('datetime64[Y]').astype(int) + 1970 for d in dates])
+# months = np.array([d.astype('datetime64[M]').astype(int) % 12 for d in dates])
+# uniqueYears = np.unique(years)
+# uniqueMonths = np.unique(months)
+# months=[monthNames[i] for i in uniqueMonths]
+# print(months)
+
+# monthly_sales = {year: {month: 0 for month in uniqueMonths} for year in uniqueYears}
+# yearly_sales = {year: 0 for year in uniqueYears}
+
+# for date, sale in zip(dates, sales):
+#     year = date.astype('datetime64[Y]').astype(int) + 1970
+#     month = date.astype('datetime64[M]').astype(int) % 12 
+#     monthly_sales[year][month] += sale
+#     yearly_sales[year] += sale
+
+# for year in uniqueYears:
+#     monthly_sales[year] = np.cumsum(list(monthly_sales[year].values()))
+
+# yearly_sales = np.cumsum(list(yearly_sales.values()))
+
+# plt.figure(figsize=(10, 5))
+# for year in uniqueYears:
+#     plt.plot(months, monthly_sales[year], label=f"{year}")
+# plt.xlabel("Month")
+# plt.ylabel("Cumulative Sales")
+# plt.title("Cumulative Monthly Sales")
+# plt.legend()
+# plt.show()
+
+# plt.figure(figsize=(10, 5))
+# plt.plot(uniqueYears, yearly_sales, marker='o', linestyle='-')
+# plt.xlabel("Year")
+# plt.ylabel("Cumulative Sales")
+# plt.title("Cumulative Yearly Sales")
+# plt.show()
+
+
+
